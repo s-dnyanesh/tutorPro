@@ -1,0 +1,152 @@
+<ion-header>
+  <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
+        </ion-buttons>
+    <ion-title>Post Enquiry</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content>
+  
+  <ion-button (click)="askDoubts()"> Ask Now</ion-button>
+
+  <ion-slides class="slide-padding" pager="true" [options]="slideOptions">
+    <ion-slide *ngFor="let story of topStories">
+        <div class="container">
+            <ion-img src="{{story.picture}}"></ion-img>
+            <h2 class="slidetitle">
+                <span class="block">{{story.title}}</span>
+            </h2>
+            <p class="author">By {{story.author}}, 2h ago</p>
+        </div>
+    </ion-slide>
+    <div class="sub-headers">
+      <p>Latest News</p>
+  </div>
+</ion-slides>
+
+<ion-slides #slides class="slide-padding" pager="true">
+  <ion-slide *ngFor="let story of AskDoubts">
+      <div >
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{story.title}}</ion-card-subtitle>
+            <ion-card-title><ion-input name={{story.title}} placeholder="Enter Input"></ion-input></ion-card-title>
+          </ion-card-header>
+        </ion-card>
+          <button type="submit" float-left ion-button  color="primary" class="btnPrev" (click)="prev()">Prev</button>
+  <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next()">Next</button>
+     
+      </div>
+  </ion-slide>
+  
+</ion-slides>
+
+
+ -->
+
+<ion-content padding>
+  <ion-input [(ngModel)]="mobileText" type= "number" placeholder="Mobile Number"></ion-input>
+  <ion-input [(ngModel)]="descriptionText" placeholder="Description "></ion-input>
+  <ion-input [(ngModel)]="chargesText" placeholder="Charges ">₹ Budget  </ion-input>
+  <ion-item>
+    <ion-label ><ion-icon name="contacts"></ion-icon> Gender</ion-label>
+    <ion-select  [(ngModel)]="genderText" placeholder="Prefered Gender ">
+      <ion-select-option value="male">Male</ion-select-option>
+      <ion-select-option value="female">Female</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-input [(ngModel)]="locationText" placeholder="Location "></ion-input>
+  <ion-item>
+    <ion-label ><ion-icon name="pin"></ion-icon> Preferred Place</ion-label>
+    <ion-select [(ngModel)]="placeText" placeholder="Select One">
+      <ion-select-option value="Students Home">Students Home</ion-select-option>
+      <ion-select-option value="Tutors Home">Tutors Home</ion-select-option>
+      <ion-select-option value="Online">Onlie</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-input [(ngModel)]="nameText" placeholder="Name"></ion-input>
+  <ion-input [(ngModel)]="standardText" placeholder="Standard"></ion-input>
+  <ion-item>
+    <ion-label >Board</ion-label>
+    <ion-select [(ngModel)]="boardText" placeholder="Select One">
+      <ion-select-option value="CBSE">CBSE</ion-select-option>
+      <ion-select-option value="ICSE">ICSE</ion-select-option>
+      <ion-select-option value="IB">IB</ion-select-option>
+      <ion-select-option value="State Board">State Board</ion-select-option>
+      <ion-select-option value="Other">other</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label >Urgency</ion-label>
+    <ion-select [(ngModel)]="urgencyText" placeholder="Select One">
+      <ion-select-option value="urgent">Urgent</ion-select-option>
+      <ion-select-option value="exploring">Just Exploring</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label > Mode</ion-label>
+    <ion-select [(ngModel)]="modeText" placeholder="Select One">
+      <ion-select-option value="online">Online</ion-select-option>
+      <ion-select-option value="Offline">Offline</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-footer >
+    <ion-row no-padding text-center>
+      <ion-col size="5">
+        <ion-button expand="block" fill="outline" color="danger" (click)="deleteIdea()">
+          <ion-icon name="trash" slot="start"></ion-icon>
+          Delete
+        </ion-button>
+      </ion-col>
+      <ion-col size="5">
+        <ion-button expand="block" fill="solid" color="success" (click)="addItem({a:chargesText},{b:genderText},{c:placeText},{d:descriptionText}
+        ,{e:locaionText},{f:mobileText},{g:nameText},{h:standardText},{i:boardText})">
+          <ion-icon name="save" slot="end"></ion-icon>
+          Post
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-footer>
+
+ <!-- 
+  <ion-item>
+    <ion-label position="stacked">Title</ion-label>
+    <ion-input [(ngModel)]="idea.name"></ion-input>
+  </ion-item>
+ 
+  <ion-item>
+    <ion-label position="stacked">MoreDetails</ion-label>
+    <ion-textarea [(ngModel)]="idea.notes" rows="8"></ion-textarea>
+  </ion-item>
+</ion-content>
+
+
+ 
+<ion-footer *ngIf="!idea.id">
+  <ion-toolbar color="success">
+    <ion-button expand="full" fill="clear" color="light" (click)="addIdea()">
+      <ion-icon name="checkmark" slot="start"></ion-icon>
+      Add Idea
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+ 
+<ion-footer *ngIf="idea.id">
+  <ion-row no-padding text-center>
+    <ion-col size="6">
+      <ion-button expand="block" fill="outline" color="danger" (click)="deleteIdea()">
+        <ion-icon name="trash" slot="start"></ion-icon>
+        Delete
+      </ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button expand="block" fill="solid" color="success" (click)="updateIdea()">
+        <ion-icon name="save" slot="start"></ion-icon>
+        Update
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
+ -->

@@ -1,0 +1,21 @@
+img {
+  max-width: 140px;
+  border-radius: 50%;
+}
+.map{
+  height: 100%;
+}
+
+ion-slide {
+  height: calc(100vh - 140px);
+}
+.transition {
+  background: linear-gradient(to right, #f57c00 14%, #ffca00 96%);
+  color: "white";
+}
+.error {
+  color: red;
+  text-align: center;
+  display: block;
+  font-weight: bold;
+}

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
+      <ion-title>Enquiry details</ion-title>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleFavorite()">
+        <ion-icon *ngIf="!isFavorite" slot="icon-only" name="star-outline"></ion-icon>
+        <ion-icon *ngIf="isFavorite" slot="icon-only" name="star"></ion-icon>
+      </ion-button>
+      <ion-button (click)="shareSession()">
+        <ion-icon slot="icon-only" name="share"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>{{item.name}}</ion-card-title>
+
+      <p> <ion-icon name="quote"></ion-icon> {{item.description}}</p>
+      <p>₹  Budget: {{item.charges}} </p>
+      <p><ion-icon name="contacts"></ion-icon> Gender : {{item.GenderPreference}}</p>
+      <p><ion-icon name="pin"></ion-icon> Place: {{item.place}}</p>
+      <p><ion-icon name="compass"></ion-icon> Location: {{item.location}}</p>
+      <p><ion-icon name="school"></ion-icon> Standard: {{item.standard}}</p>
+      <p>Board: {{item.board}}</p>
+      <p>Mode: {{item.mode}}</p>
+      <p>Urgency: {{item.track}}</p>
+      <p><ion-icon name="stopwatch"></ion-icon> Time Added: {{item.timeDate}}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+<ion-buttons slot="primary">
+  <ion-button fill="solid" (click)="contactUser()">
+    <ion-icon slot="start" name="contact" ></ion-icon>
+    Contact
+  </ion-button>
+
+  <button ion-button fill="solid" (click)="hide(hideMe)"><ion-icon slot="start" name="contact" ></ion-icon>Contact</button>
+  <div *ngIf="hideMe">
+    {{item.mobilenumber}}
+   </div>
+ 
+
+    <ion-icon slot="end" name="bug" (click)="reportClick()"></ion-icon> 
+    <ion-icon slot="end" name="help-circle" (click)="presentAlertConfirm()"></ion-icon>
+   </ion-buttons>

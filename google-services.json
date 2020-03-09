@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "242492122477",
+    "firebase_url": "https://fir-app-ddcff.firebaseio.com",
+    "project_id": "fir-app-ddcff",
+    "storage_bucket": "fir-app-ddcff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242492122477:android:f22d3fd771e20042756664",
+        "android_client_info": {
+          "package_name": "com.myprivate.tutor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242492122477-ajt11pcgige3d5h0g0mremm5u1mcuel5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnUEHsmvmoN7xs-i7jiZAprwwefcbFdSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "242492122477-ajt11pcgige3d5h0g0mremm5u1mcuel5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

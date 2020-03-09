@@ -1,0 +1,191 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="username" class="ion-padding-top ion-text-center">
+    <img src="https://www.gravatar.com/avatar?d=mm&s=140" alt="avatar">
+    <h2>{{username}}</h2>
+    <ion-item>
+      <ion-label>Coin Balance</ion-label>
+      <ion-badge slot="end">22</ion-badge>
+    </ion-item>
+
+    
+  </div>
+  <ion-card>
+  
+    <ion-card-content>
+      <ion-list inset>
+        <ion-item (click)="updatePicture()">Update Picture</ion-item>
+        <ion-item (click)="changeUsername()">Change Username</ion-item>
+        <ion-item (click)="changePassword()">Change Password</ion-item>
+        <ion-item (click)="support()">Support</ion-item>
+        <ion-item (click)="logout()">Logout</ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      <ion-card-title>Card Title</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-item (click)="changePassword()">Location</ion-item>
+        <ion-item (click)="changePassword()">PIN CODE</ion-item>
+        <ion-item (click)="changePassword()">Qualification</ion-item>
+      </ion-list>
+      <ion-item ><ion-checkbox value= 'online'></ion-checkbox>Online<ion-checkbox value= 'offline'></ion-checkbox>Offline</ion-item> 
+      <ion-item><ion-label>Distance</ion-label>
+        <ion-range min="0" max="40" color="secondary" pin="true">
+          <ion-label slot="start">0 Km</ion-label>
+          <ion-label slot="end">40 Km</ion-label>
+        </ion-range>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-button (click)="locate()">Locate</ion-button>
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Google Map
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    
+    <div #Map class="map"></div>
+
+    
+  </ion-content>
+</ion-content>
+ -->
+
+ <ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>
+      Anonymous Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    Welcome user
+    <p>Here are your profile details</p>
+
+    <ion-item *ngIf="user">
+      <ion-thumbnail slot="start">
+        <img [src]="user.photoURL">
+      </ion-thumbnail>
+      <ion-label text-wrap>
+        <ion-text color="primary">
+          <h3>{{user.displayName}}</h3>
+        </ion-text>
+        <p>{{user.email}}</p>
+      </ion-label>
+    </ion-item>
+  </div>
+  <ion-list-header color="medium">
+    Update Profile
+  </ion-list-header>
+  <ion-item>
+    <ion-label position="fixed">Username</ion-label>
+    <ion-input type="string" placeholder="Enter new" [(ngModel)]="username"></ion-input>
+    <ion-button slot="end" color="success" expand="full" (click)="updateUsername()">Update</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-label position="fixed">Image</ion-label>
+    <ion-input type="number" placeholder="A number 1-1000" [(ngModel)]="image"></ion-input>
+    <ion-button slot="end" color="success" expand="full" (click)="updateImage()">Update</ion-button>
+  </ion-item>
+  <ion-list-header color="medium">
+    Sensitive Updates
+  </ion-list-header>
+  <ion-item>
+    <ion-label position="fixed">Email</ion-label>
+    <ion-input type="string" placeholder="Enter new" [(ngModel)]="email"></ion-input>
+    <ion-button slot="end" color="success" expand="full" (click)="updateEmail()">Update</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-label position="fixed">Password</ion-label>
+    <ion-input type="string" placeholder="Enter new" [(ngModel)]="password"></ion-input>
+    <ion-button slot="end" color="success" expand="full" (click)="updatePassword()">Update</ion-button>
+  </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-text class="error" text-center>{{error}}</ion-text>
+    </ion-col>
+  </ion-row>
+
+  <!-- 
+  <ion-row>
+    <ion-col>
+      <ion-button *ngIf="userWantsToSignup" expand="block" (click)="signup()" color="undefined" class="transition">
+        <strong class="white">
+          Sign Up</strong></ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button *ngIf="!userWantsToSignup" expand="block" (click)="wantsToSignup()" color="undefined"
+        class="transition"><strong class="white">I want to
+          Sign Up</strong></ion-button>
+    </ion-col>
+  </ion-row> -->
+  <ion-row>
+    <ion-col>
+      <ion-text class="error" text-center>{{linkError}}</ion-text>
+    </ion-col>
+  </ion-row>
+  <input type="file" (change)="fileChangeEvent($event)" />
+
+<image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="false"
+    [aspectRatio]="4 / 3"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()"
+></image-cropper>
+
+<img [src]="croppedImage" />
+
+<ion-toolbar>
+  <ion-title>
+    Ionic Image Cropper
+  </ion-title>
+  <ion-buttons>
+    <ion-button fill="clear" color="danger" (click)="captureImage()">
+      <ion-icon name="close" slot="icon-only"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear" color="secondary" (click)="uploadImage()">
+      <ion-icon name="checkmark" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-button expand="full" (click)="captureImage()">
+  <input type="file" (change)="uploadImage(file)" />
+  Capture image
+</ion-button>
+<ion-button (click)="captureImage()">Pick Image</ion-button>
+</ion-content>
+<ion-footer class="transition">
+  <ion-toolbar color="undefined" (click)="logout()">
+    <ion-title>
+      Logout
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

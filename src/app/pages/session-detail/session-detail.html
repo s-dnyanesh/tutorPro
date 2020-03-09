@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleFavorite()">
+        <ion-icon *ngIf="!isFavorite" slot="icon-only" name="star-outline"></ion-icon>
+        <ion-icon *ngIf="isFavorite" slot="icon-only" name="star"></ion-icon>
+      </ion-button>
+      <ion-button (click)="shareSession()">
+        <ion-icon slot="icon-only" name="share"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="session" class="ion-padding">
+    <h1>{{session.name}}</h1>
+    <span *ngFor="let track of session?.tracks" [class]="'session-track-'+track.toLowerCase()">#{{track}} Charge : {{session.Charges}}</span>
+    <p>Id {{session.id}}</p><ion-badge color="danger">{{session.Charges}}</ion-badge>
+    <p>{{session.description}}</p>
+    <ion-text color="medium">
+      {{session.timeStart}} &ndash; {{session.timeEnd}}
+      <br /> {{session.location}}
+    </ion-text>
+    <p>
+      {{session.PreferredPlace}} &mdash; {{session.GenderPreference}}
+    </p>
+  </div>
+  
+ 
+</ion-content>
+<ion-buttons slot="primary">
+    <ion-button fill="solid" (click)="contactUser()">
+      <ion-icon slot="start" name="contact" ></ion-icon>
+      Contact
+    </ion-button>
+    <div showWhen="android">
+      I am visible on Android!
+     </div>
+   
+
+      <ion-icon slot="end" name="help-circle" (click)="sessionClick('mark as Report')"></ion-icon> 
+      <ion-icon slot="end" name="help-circle" (click)="presentAlertConfirm()"></ion-icon>
+     </ion-buttons>
